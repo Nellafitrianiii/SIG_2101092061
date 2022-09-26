@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Multi Marker</title>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+</body>
+<script type="text/javascript">
+    var mymap = L.map('mapku').setView([-0.9142457879571544, 100.46627998331252], 17);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    var locations =[[0.5977638211122352, 100.65033817003992],
+                    [-0.91301245183467, 100.46278219228387],
+                    [-0.9142457879571544, 100.46627998331252],
+                    [-0.9140637441046389, 100.46090464614194],
+                    [-0.9148468135175777, 100.45878028687522],
+                    [-0.9147288472185611, 100.46178441061987],
+                    [-0.9120255241177908, 100.46115140934916],
+                    [-0.9130875441498664, 100.46017508535535],
+                    [-0.08756172027829236, 100.52371236282542]];
+
+    for (var i =0; i < locations.length; i++){
+        marker = new L.marker([locations[i][0],locations[i][1]]).addTo(mymap);
+    }
+</script>
+</html>

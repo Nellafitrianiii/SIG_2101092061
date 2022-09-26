@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Latihan 3</title>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+</body>
+<script type="text/javascript">
+    var mymap = L.map('mapku').setView([-0.9142457879571544, 100.46627998331252], 17);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    L.marker([-0.9142457879571544, 100.46627998331252]).bindTooltip("Politeknik Negeri Padang").addTo(mymap);
+    L.marker([-0.5983860531515653, 100.65061707800335]).bindTooltip("Deno Motor").addTo(mymap);
+
+    L.marker([-0.9142457879571544, 100.46627998331252]).bindPopup("<b> Info Politeknik Negeri Padang ").addTo(mymap);
+    L.marker([-0.5983860531515653, 100.65061707800335]).bindPopup("<b> Info Deno Motor").addTo(mymap);
+
+    var info_politeknik_negeri_padang ='<p style="text-align : center;"><img src="https://lh5.googleusercontent.com/p/AF1QipNVDp0t3hfhF5Jd45X6lQvDLQNBjmS3zt3achgN=w408-h306-k-no" width="250px" height="100px"></p> <p> Politeknik Negeri Padang memiliki 7 jurusan yakni : Teknik Elektro, Teknik Mesin, Teknik Sipil, Teknologi informasi, Akuntansi, Administrasi Niaga, Bahasa inggris"</p>'
+    L.marker([-0.9142457879571544, 100.46627998331252]).bindTooltip("Politeknik Negeri Padang").bindPopup(info_politeknik_negeri_padang).addTo(mymap);
+
+    var info_deno_motor ='<p style="text-align: center;"><img src="https://lh5.googleusercontent.com/p/AF1QipN6CZ6SAvFmCQEhqjc5u4b1Hlh3iziUZqUfCgcg=w408-h725-k-no" width="250px" height="100px"><p> menjual sparepart sepeda motor dan alat listrik </p>'
+    L.marker([-0.5983860531515653, 100.65061707800335]).bindTooltip("Deno Motor").bindPopup(info_deno_motor).addTo(mymap);
+
+    var circle = L.circle([-0.5983860531515653, 100.65061707800335],{
+        color:'red',
+        fillColor:'#f03',
+        fillOpacity:0.5,
+        radius: 500
+    }).addTo(mymap).bindPopup('i love u.')
+    var polygon = L.polygon([
+        [0.5978147318658945, 100.65048964765273],
+        [-0.9142457879571544, 100.46627998331252],
+        [-0.5975219909670073, 100.65023037878335]
+    ]).addTo(mymap).bindPopup('i am stand alone popup.').openOn(mymap);
+    
+    var popup =L.popup()
+        .setLatLng([51.513,-0.09])
+        .setContent('you clicked the map at'+ e.latlng.toString())
+        .openOn(mymap);
+</script>
+</html>
