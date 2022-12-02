@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>UTS Nella Fitriani</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 600px;
+			width: 100%;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+<div id='map'></div>
+
+<script src="indonesia.geojson" type="text/javascript"></script>
+
+<script src="tandunn.js" type="text/javascript"></script>
+
+<script>
+	const map = L.map('map').setView([0.5979257644346027, 100.65036381807752], 17);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+    L.marker([0.5979551807708391, 100.65015682364263]).bindTooltip("Deno Motor ").addTo(map);
+    L.marker([0.5970531778757031, 100.650221300315]).bindTooltip("Rumah makan ampera ajo ").addTo(map);
+    L.marker([0.5965936769243125, 100.65016305055553]).bindTooltip("Bakso Mie Ayam Mas Ardhi ").addTo(map);
+    L.marker([0.5957911681284833, 100.6499365237132]).bindTooltip("Masjid Raya Ubudiyah Tandun").addTo(map);
+    L.marker([0.5974092803751416, 100.65031598645814]).bindTooltip("Hokky All shop").addTo(map);
+    L.marker([0.5973074212622933, 100.65025906138145]).bindTooltip("Toko Yogi ").addTo(map);
+    L.marker([0.5972228516806718, 100.65028280150118]).bindTooltip("Dimas Sostel").addTo(map);
+    L.marker([0.5971546025436745, 100.6502056461121]).bindTooltip("Rumah makan Toni").addTo(map);
+    L.marker([0.5969217439647431, 100.65048965955421]).bindTooltip("Toko obat saudara").addTo(map);
+    L.marker([0.5969981402630092, 100.65041470062722]).bindTooltip("Posko PPKM mikro Tandun").addTo(map);
+    L.marker([0.5971494914168043, 100.65051993142856]).bindTooltip("Toko Azahra").addTo(map);
+    L.marker([0.5971033653513301, 100.650674173836]).bindTooltip("Usaha baru").addTo(map);
+    L.marker([0.5967372396928721, 100.65056461848118]).bindTooltip("Cahaya baru pasar tandun").addTo(map);
+
+    var KoordinatArea = [
+        
+           
+            [0.5979551807708391, 100.65015682364263],
+            [0.5970531778757031, 100.650221300315],
+            [0.5965936769243125, 100.65016305055553],
+            [0.5957911681284833, 100.6499365237132],
+            [0.5974092803751416, 100.65031598645814],
+            [0.5973074212622933, 100.65025906138145],
+            [0.5972228516806718, 100.65028280150118],
+            [0.5971546025436745, 100.6502056461121],
+            [0.5969217439647431, 100.65048965955421],
+            [0.5969981402630092, 100.65041470062722],
+            [0.5971494914168043, 100.65051993142856],
+            [0.5971033653513301, 100.650674173836],
+            [0.5967372396928721, 100.65056461848118],
+
+    ];
+
+   var arearumah = L.polygon(KoordinatArea,{color: 'red'}).addTo(map);
+    
+    
+    const bicycleRentalLayer = L.geoJSON([tandun], {
+
+    style(feature) {
+        return feature.properties && feature.properties.style;
+    },
+
+    onEachFeature,
+
+    pointToLayer(feature, latlng) {
+        return L.circleMarker(latlng, {
+            radius: 8,
+            fillColor: '#ff7800',
+            color: '#000',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        });
+    }
+    }).addTo(map);
+
+</script>
+</body>
+</html>
