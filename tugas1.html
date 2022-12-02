@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Tugas1</title>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px;"></div>
+</body>
+<script type="text/javascript">
+    var mymap = L.map('mapku').setView([-0.9142457879571544, 100.46627998331252], 17);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
+
+    L.marker([0.5963224059409744, 100.65047168183418]).bindTooltip("SDN 001 TANDUN").addTo(mymap);
+    L.marker([0.6028628208884864, 100.64669585299838]).bindTooltip("SDN 013 TANDUN").addTo(mymap);
+    L.marker([0.5885804649701206, 100.65260542786405]).bindTooltip("PP DARUL ULUM TANDUN").addTo(mymap);
+    L.marker([0.6230827629487705, 100.55142060987973]).bindTooltip("SDN 009 TANDUN").addTo(mymap);
+    L.marker([0.5830253952516945, 100.59303289438118]).bindTooltip("SDN 010 TANDUN").addTo(mymap);
+    L.marker([0.5767510283469148, 100.59752680077993]).bindTooltip("SDN 002 TANDUN").addTo(mymap);
+    L.marker([0.5935729655529336, 100.65383173117888]).bindTooltip("SDN 017 TANDUN").addTo(mymap);
+    L.marker([0.5857621325011825, 100.66248772686149]).bindTooltip("SDN 015 TANDUN").addTo(mymap);
+    L.marker([0.5903180980312338, 100.6591537157357]) .bindTooltip("SMPN 1 TANDUN").addTo(mymap);
+    L.marker([0.6095964945039203, 100.64314074360209]).bindTooltip("SMAN 1 TANDUN").addTo(mymap);
+
+    L.marker([0.5963224059409744, 100.65047168183418]).bindPopup("<b> SD ini terletak di RT 08 RW 03 ").addTo(mymap);
+    L.marker([0.6028333861094601, 100.64671491995324]).bindPopup("<b> SD ini terletak di KM2 Tandun").addTo(mymap);
+    L.marker([0.5885804649701206, 100.65260542786405]).bindPopup("<b> PP DARUL ULUM ").addTo(mymap); 
+    L.marker([0.6230827629487705, 100.55142060987973]).bindPopup("<b> SDN 9").addTo(mymap);
+
+    var info_SD1 ='<p style="text-align : center;"><img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=i_NCBUDNaRxWZFnuF2hioQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=92.85631&pitch=0&thumbfov=100" width="250px" height="100px"> <p> SD NEGERI 001 Tandun adalah sekolah dasar yang terletak di  RT 008, RW 003 kecamatan tandun kabupaten rokan hulu"</p>'
+    L.marker([0.5963224059409744, 100.65047168183418]).bindTooltip("SDN 001 TANDUN").bindPopup(info_SD1).addTo(mymap);
+
+    var info_SD15 ='<p style="text-align: center;"><img src="https://lh5.googleusercontent.com/p/AF1QipPw6jH4jxoIGKiijyG2DDZqbvJBNS3b6bHxSIqN=w426-h240-k-no" width="250px" height="100px"><p> SD NEGERI 015 Tandun adalah sekolah dasar yang terletak di  RT 001, RW 001 kecamatan tandun kabupaten rokan hulu </p>'
+    L.marker([0.5857621325011825, 100.66248772686149]).bindTooltip("SDN 015 TANDUN").bindPopup(info_SD15).addTo(mymap);
+
+    var circle = L.circle([-0.5983860531515653, 100.65061707800335],{
+        color:'red',
+        fillColor:'#f03',
+        fillOpacity:0.5,
+        radius: 500
+    }).addTo(mymap).bindPopup('i love u.')
+    var polygon = L.polygon([
+        [0.5857621325011825, 100.66248772686149],
+        [0.5852913366367849, 100.66170149826715],
+        [0.5863746880459105, 100.66273435438517],
+        [0.5880088765868873, 100.66422770800266],
+        [0.5891927203643131, 100.66249066527092],
+        [0.5904657511768989, 100.66025773785965],
+        [0.5902642785852065, 100.65936361085937],
+        [0.5895253972118343, 100.65588012832032],
+        [0.5896837289413608, 100.65277930111206],
+        [0.5877441649448121, 100.65326751645972],
+        [0.5875101545281173, 100.65184287921743],
+
+    ]).addTo(mymap).bindPopup('i am stand alone popup.').openOn(mymap);
+    
+    var popup =L.popup()
+        .setLatLng([51.513,-0.09])
+        .setContent('you clicked the map at'+ e.latlng.toString())
+        .openOn(mymap);
+        
+</script>
+</html>
